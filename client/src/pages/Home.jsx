@@ -4,7 +4,7 @@ import Banner from '../components/Banner';
 import Mission from '../components/Mission';
 import Insights from '../components/Insights';
 import Buttons from '../components/Buttons';
-
+import Footer from '../components/Footer';
 const Home = () => {
   return (
     // React fragments <> allow you to return multiple elements without an extra <div>
@@ -15,6 +15,7 @@ const Home = () => {
       <Mission />
       <Insights />
       <Buttons />
+      <Footer />
     </>
   );
 };
