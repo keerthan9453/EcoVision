@@ -5,18 +5,19 @@ import Mission from '../components/Mission';
 import Insights from '../components/Insights';
 import Buttons from '../components/Buttons';
 import Footer from '../components/Footer';
+import AccessibilityMenu from '../components/AccessibilityMenu';
 const Home = () => {
   return (
-    // React fragments <> allow you to return multiple elements without an extra <div>
-    <>
+    <div id="main-content-area">
       <Header />
       {/* The banner immediately follows the header */}
       <Banner />
+      <AccessibilityMenu />
       <Mission />
       <Insights />
       <Buttons />
       <Footer />
-    </>
+    </div>
   );
 };
 

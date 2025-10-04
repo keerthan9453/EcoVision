@@ -179,10 +179,10 @@ img {
 .box1, .box2, .box3 {
     flex: 1;
     max-width: 350px;
-    background-color: white;
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(145deg, #e5e8e8, #f0fff0); 
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
     text-align: center;
 }
 
@@ -310,6 +310,8 @@ img {
   background: rgb(16, 133, 110);
   color: white;
   margin-top: 3rem;
+  flex-wrap: wrap;
+  overflow: hidden;
 }
 
 .footer-content {
@@ -319,6 +321,9 @@ img {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
   gap: 3rem;
+  z-Index: 1000;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .footer-section h4 {
@@ -419,4 +424,119 @@ img {
     font-weight: 600;
     color: #ecf5f4;
     margin-bottom: 1.5rem;
+    margin-left: 10px;
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 2rem 1rem;
+    text-align: center;
+  }
+
+  .footer-logo {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-content {
+    padding: 1.5rem 1rem;
+  }
+
+  .footer-logo-text {
+    font-size: 1.5rem;
+  }
+}
+
+body.high-contrast-mode {
+    background-color: black !important;
+    color: rgb(6, 46, 82) !important; 
+}
+
+body.high-contrast-mode .box1,
+body.high-contrast-mode .box2,
+body.high-contrast-mode .box3 {
+    background-color: rgb(225, 218, 218) !important;
+}
+
+body.high-contrast-mode * {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    color: rgb(6, 46, 82) !important; 
+}
+
+body.high-contrast-mode .text-overlay1 {
+    background: rgb(173, 167, 167) !important; 
+    color: rgb(6, 46, 82) !important;
+    border-radius: 25px;
+}
+body.high-contrast-mode .insights {
+    background: rgb(173, 167, 167) !important;
+    color: rgb(168, 206, 239)  !important;
+    border-radius: 25px;
+    width: 80%;
+}
+body.high-contrast-mode .banner {
+    background: rgb(248, 246, 246) !important;
+    color: rgb(4, 30, 53)  !important;
+}
+body.high-contrast-mode .text-overlay h1, .text-overlay p {
+    color: rgb(0, 5, 9)  !important;
+}
+body.high-contrast-mode a,
+body.high-contrast-mode button {
+    color: white!important; 
+    border: 1px solid #eff5f5 !important;
+    padding: 5px 10px !important;
+    border-radius: 20px !important;
+}
+
+body.high-contrast-mode .buttons {
+    background: rgb(158, 151, 151) !important;
+    border-radius: 20px !important;
+}
+body.high-contrast-mode button:hover,
+body.high-contrast-mode a:hover {
+    background-color: grey !important;
+}
+
+body.high-contrast-mode .footer {
+    background: rgb(150, 143, 143) !important;
+    color: rgb(247, 244, 244) !important;
+}   
+body.high-contrast-mode .footer-bottom {
+    background: rgb(116, 113, 113) !important;
+    color: rgb(245, 244, 244) !important;
+}   
+
+body.high-contrast-mode header h1 {
+    color: rgb(245, 244, 244) !important;
+}
+
+body.larger-text-mode {
+    font-size: 1.15em !important; 
+    line-height: 1.7 !important;
+    font-family: 'Arial', 'Verdana', sans-serif !important;
+}
+
+body.larger-text-mode *,
+body.larger-text-mode h1,
+body.larger-text-mode h2,
+body.larger-text-mode p,
+body.larger-text-mode button,
+body.larger-text-mode a {
+    font-family: 'Arial', 'Verdana', sans-serif !important; 
+    font-size: 1.15em; 
+}
+
+
+body.larger-text-mode .text-overlay h1 {
+    font-size: 100px !important;
+}
+
+body.larger-text-mode .text-overlay p {
+    font-size: 30px !important; 
 }
