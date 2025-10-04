@@ -1,10 +1,12 @@
+// client/src/pages/Home.jsx
+
 import React from 'react';
 import Header from '../components/Header';
 import Banner from '../components/Banner';
 import Mission from '../components/Mission';
 import Insights from '../components/Insights';
 import Buttons from '../components/Buttons';
-import { useAuth0 } from "@auth0/auth0-react";
+import Footer from '../components/Footer'; // Keep this one
 
 const Home = () => {
   return (
@@ -16,6 +18,7 @@ const Home = () => {
       <Mission />
       <Insights />
       <Buttons />
+      <Footer />
     </>
   );
 };

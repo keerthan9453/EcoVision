@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 
@@ -75,6 +76,25 @@ const Header = () => {
       </nav>
     </header>
   );
+=======
+// client/src/components/Header.jsx
+import React from 'react';
+import '../styles/Style.css';
+
+const Header = () => {
+    return (
+        <header>
+            {/* Applied new h1Style here */}
+            <h1>Eco Vision</h1>
+
+            <nav>
+                <a href="/">Home</a>
+                <a href="/about">About</a>
+                <a href="/contact">Contact</a>
+            </nav>
+        </header>
+    );
+>>>>>>> 6f4d38c0acdf3a3397e2dfad65571f87b0352cde
 };
 
 export default Header;

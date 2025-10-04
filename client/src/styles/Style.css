@@ -1,3 +1,32 @@
+header {
+    position: relative;
+    width: 100%;
+    top: 0;
+    z-Index: 1000;
+    background-color: rgb(2, 88, 82);
+    color: white; 
+    padding: 30px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+
+header nav a {
+    color: white; /* <-- Ensured white for all states */
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 20px;
+}
+
+header h1 {
+    margin: 0;
+    margin-left: 40px;
+    font-size: 24px;
+}
+
+
 .banner {
     position: relative;
     background: linear-gradient(to right, #96b7ae, #a6ded5,#a4f1ce) no-repeat center center;
@@ -71,12 +100,48 @@ img {
         margin: 40px 0;
     }
 }
+
+.mission {
+    position: relative;
+    width: 80%;
+    margin: 50px auto;
+    padding: 20px;
+    background-color:rgb(212, 232, 218);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+.text-overlay1 {
+    text-align: center;
+    z-index: 1;
+    font-size: 24px;
+    padding: 40px;
+}
+
+.text-overlay1 h1 {
+    font-size: 40px;
+    font-family: 'Arial, sans-serif';
+    margin-bottom: 10px;
+    font-weight: bold;
+    padding: 10px, 20px;
+    color: rgb(4, 39, 37);
+}
+
+.text-overlay1 p {
+    font-size: 20px;
+    font-style: italic;
+    font-family: 'Georgia, serif';
+    color: rgb(2, 28, 29);
+    margin: 0 20px;
+    line-height: 1.6;
+}
+
 .insights {
     position: relative;
     width: 80%;
     margin: 50px auto;
     padding: 30px;
-    background-color: #f6f6fdff;
+    background-color: rgb(179, 234, 196);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
@@ -84,6 +149,7 @@ img {
 
 .insights h1 {
     font-size: 40px;
+    font-family: 'Arial, sans-serif';
     color: #004d40;
     margin-bottom: 40px;
 }
@@ -158,9 +224,14 @@ img {
     }
 }
 .buttons {
-    padding: 60px 20px;
+    position: relative;
+    width: 80%;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: rgb(179, 234, 196);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
-    background-color: #f7f7f7;
 }
 
 .buttons h1 {
@@ -233,4 +304,119 @@ img {
         flex: 1 1 45%;
         max-width: 45%;
     }
+}
+
+.footer {
+  background: rgb(16, 133, 110);
+  color: white;
+  margin-top: 3rem;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 1rem;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 3rem;
+}
+
+.footer-section h4 {
+  color: rgb(238, 249, 248);
+  margin: 0 0 1rem 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 1.3rem;
+  margin-bottom: 1.5rem;
+}
+
+.footer-logo-text {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: turquoise;
+  letter-spacing: -0.5px;
+}
+
+.footer-tagline {
+  color: #ccc;
+  line-height: 1.6;
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 0.75rem;
+}
+
+.footer-links a {
+  color: #ddd;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-size: 1rem;
+}
+
+.footer-links a:hover {
+  color: hotpink;
+}
+
+.contact-item {
+  margin-bottom: 1rem;
+  color: #ddd;
+  font-size: 1.1rem;
+}
+
+.social-links {
+  margin-top: 1.5rem;
+}
+
+.footer-logo span {
+    display: block;
+    margin-bottom: 0.5rem;
+    color:rgb(212, 239, 237);
+    font-size: 4rem;
+}
+.social-link {
+  color: #ddd;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-size: 1.1rem;
+  display: inline-block;
+  margin-right: 1rem;
+}
+
+.social-link:hover {
+  color: hotpink;
+}
+
+.footer-bottom {
+  background: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  padding: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-bottom p {
+  margin: 0;
+  z-index: 1;
+  font-weight: bold;
+  color: #bbb;
+  font-size: 1.3rem;
+}
+
+.footer-section h4 {
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: #ecf5f4;
+    margin-bottom: 1.5rem;
 }
