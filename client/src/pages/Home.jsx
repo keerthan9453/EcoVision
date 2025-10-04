@@ -4,6 +4,7 @@ import Banner from '../components/Banner';
 import Mission from '../components/Mission';
 import Insights from '../components/Insights';
 import Buttons from '../components/Buttons';
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Home = () => {
   return (
