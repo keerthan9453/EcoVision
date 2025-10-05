@@ -1,0 +1,145 @@
+/* Chatbot.css */
+
+/* --- Theme Variables for Easy Theming --- */
+:root {
+    --primary-eco-color: #008060; /* Your green theme color */
+    --secondary-bg-color: #e5f5e5; /* Light green for bot bubble */
+    --widget-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    --text-color-dark: #333;
+}
+
+/* 1. WIDGET CONTAINER (Fixed Position) */
+.chatbot-widget-container {
+    position: fixed;
+    bottom: 120px; 
+    right: 30px;
+    z-index: 1000; /* High z-index to stay above page content */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+/* 2. FLOATING ACTION BUTTON (FAB) */
+.chatbot-fab-button {
+    background-color: var(--primary-eco-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: var(--widget-shadow);
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.chatbot-fab-button:hover {
+    background-color: #00664c; /* Darker green on hover */
+    transform: scale(1.05);
+}
+
+/* 3. POP-UP WINDOW */
+.chatbot-popup-window {
+    position: absolute;
+    bottom: 75px; /* Position above the button */
+    right: 0;
+    width: 320px;
+    height: 400px;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--widget-shadow);
+    display: flex;
+    flex-direction: column;
+    
+    /* Animation for smooth pop-up */
+    transform-origin: bottom right;
+    animation: slideUp 0.3s ease-out;
+}
+
+/* Pop-up Animation */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Header & Close Button */
+.popup-header {
+    background-color: var(--primary-eco-color);
+    color: white;
+    padding: 12px 15px;
+    font-size: 1.1em;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.close-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5em;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+}
+
+/* Body (Message Area) */
+.popup-body {
+    flex-grow: 1;
+    padding: 15px;
+    overflow-y: auto;
+    background-color: #f9f9f9;
+    font-size: 0.9em;
+}
+
+.message-bubble {
+    max-width: 80%;
+    padding: 10px 12px;
+    border-radius: 15px;
+    line-height: 1.4;
+    word-wrap: break-word;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.bot-bubble {
+    background-color: var(--secondary-bg-color);
+    color: var(--text-color-dark);
+    margin-right: auto; /* Aligns bot message to the left */
+}
+
+/* Footer (Input Area) */
+.popup-footer {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #eee;
+    background-color: white;
+}
+
+.popup-footer input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    margin-right: 8px;
+    outline: none;
+}
+
+.popup-footer button {
+    background-color: var(--primary-eco-color);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 15px;
+    cursor: not-allowed; /* Disabled in this front-end only version */
+    opacity: 0.7;
+}
