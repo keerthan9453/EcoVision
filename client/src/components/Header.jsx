@@ -1,123 +1,92 @@
-
-// client/src/components/Header.jsx
 import '../styles/Style.css';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const headerStyle = {
-  position: 'relative',
-  width: '100%',
-  top: 0,
-  zIndex: 1000,
-  backgroundColor: 'rgb(2, 88, 82)',
-  color: 'white',
-  padding: '30px 0',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  flexWrap: 'wrap',
-  overflow: 'hidden',
-};
-
-const navLinkStyle = {
-  color: 'white',
-  textDecoration: 'none',
-  margin: '0 15px',
-  fontSize: '20px',
-};
-
-const h1Style = {
-  margin: 0,
-  marginLeft: '40px',
-  fontSize: '24px',
-};
-
-const buttonStyle = {
-  backgroundColor: 'transparent',
-  color: '#61dafb',
-  border: '2px solid #61dafb',
-  borderRadius: '8px',
-  padding: '8px 16px',
-  fontSize: '16px',
-  cursor: 'pointer',
-  marginLeft: '15px',
-  transition: 'all 0.3s ease',
-};
-
-const hoverStyle = {
-  backgroundColor: '#61dafb',
-  color: 'rgb(2, 88, 82)',
-};
-
-// Component now accepts user and setUser as props
-const Header = ({ user, setUser }) => { 
-  const [isHovering, setIsHovering] = useState(false);
+const Header = ({ user, setUser }) => {
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const handleLogout = () => {
     localStorage.removeItem('token');
-    // Clear central user state
-    setUser(null); 
+    setUser(null);
+    setMenuOpen(false);
   };
 
+  const toggleMenu = () => setMenuOpen(!menuOpen);
+
   return (
-    <header style={headerStyle}>
-      {/* Use Link or a tag for home navigation */}
-      <Link to="/" style={{ ...h1Style, ...navLinkStyle }}>
+    <header className="header">
+      <Link to="/" className="logo">
         Eco Vision
       </Link>
 
-      <nav style={{ display: 'flex', alignItems: 'center' }}>
-        <Link to="/" style={navLinkStyle}>
+      {/* Hamburger Icon */}
+      <div className={`hamburger ${menuOpen ? 'open' : ''}`} onClick={toggleMenu}>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      {/* Sidebar / Mobile Drawer */}
+      <nav className={`sidebar ${menuOpen ? 'show' : ''}`}>
+        <Link to="/" className="nav-link" onClick={() => setMenuOpen(false)}>
           Home
         </Link>
-        
-        {/* Contact link remains */}
+
         <a
           href="#footer"
-          rel="noopener noreferrer"
+          className="nav-link"
           onClick={(e) => {
             e.preventDefault();
             const footer = document.getElementById('footer');
             if (footer) footer.scrollIntoView({ behavior: 'smooth' });
+            setMenuOpen(false);
           }}
-          style={navLinkStyle}
         >
           Contact
         </a>
 
         {user ? (
           <>
-            {/* Display username and Profile Link/Button */}
-            <span style={{ marginLeft: '20px' }}>Hi, {user.username}</span>
-            <Link to="/profile" style={navLinkStyle}>
-                Profile
-            </Link>
-            
-            <button
-              style={{
-                ...buttonStyle,
-                ...(isHovering ? hoverStyle : {}),
-              }}
-              onMouseEnter={() => setIsHovering(true)}
-              onMouseLeave={() => setIsHovering(false)}
-              onClick={handleLogout}
-            >
+            <span className="username">Hi, {user.username}</span>
+            <button className="logout-btn" onClick={handleLogout}>
               Log Out
             </button>
           </>
         ) : (
-          /* Single Login button linking to the new page */
-          <Link to="/login">
-            <button
-              style={{
-                ...buttonStyle,
-                ...(isHovering ? hoverStyle : {}),
-              }}
-              onMouseEnter={() => setIsHovering(true)}
-              onMouseLeave={() => setIsHovering(false)}
-            >
-              Log In / Sign Up
+          <Link to="/login" onClick={() => setMenuOpen(false)}>
+            <button className="login-btn">Log In / Sign Up</button>
+          </Link>
+        )}
+      </nav>
+
+      {/* Desktop Menu */}
+      <nav className="desktop-menu">
+        <Link to="/" className="nav-link">
+          Home
+        </Link>
+
+        <a
+          href="#footer"
+          className="nav-link"
+          onClick={(e) => {
+            e.preventDefault();
+            const footer = document.getElementById('footer');
+            if (footer) footer.scrollIntoView({ behavior: 'smooth' });
+          }}
+        >
+          Contact
+        </a>
+
+        {user ? (
+          <>
+            <span className="username">Hi, {user.username}</span>
+            <button className="logout-btn" onClick={handleLogout}>
+              Log Out
             </button>
+          </>
+        ) : (
+          <Link to="/login">
+            <button className="login-btn">Log In / Sign Up</button>
           </Link>
         )}
       </nav>

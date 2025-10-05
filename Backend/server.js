@@ -1,13 +1,24 @@
 const express = require('express');
+const cors = require('cors');
 const jwt = require('jsonwebtoken');
-const cors = require('cors'); // <--- 1. Import CORS
+const bodyParser = require('body-parser');
 
 const app = express();
-// 2. Enable CORS for the port your Vite/React app usually runs on
-// If your frontend runs on 3000, 5173, etc., make sure the port is included.
-// Using cors() without parameters allows all origins for now, which is usually fine for development.
-app.use(cors()); 
-app.use(express.json()); // built-in body parser
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+};
+// 🔥 Step 1: Apply CORS before any routes
+app.use(cors(corsOptions));
+// Preflight request handler
+
+
+// 🔥 Step 2: Enable parsing for JSON
+app.use(bodyParser.json());
+
+// 🔥 Step 3: Explicitly handle preflight OPTIONS
+
 
 // It is best practice to move the secret to environment variables
 const secret = process.env.JWT_SECRET || 'your-secret-key';
@@ -22,6 +33,8 @@ app.post('/signup', (req, res) => {
   if (!username || !password) {
     return res.status(400).json({ message: 'Username and password are required.' });
   }
+  if (users.find(u => u.username === username)) return res.status(409).json({ message: 'User already exists' });
+
   if (users.find(u => u.username === username)) {
     // Ensuring this response is clear if the user already exists
     return res.status(409).json({ message: 'User already exists. Please log in.' }); 
@@ -36,6 +49,7 @@ app.post('/login', (req, res) => {
   const { username, password } = req.body;
   if (!username || !password) {
     return res.status(400).json({ message: 'Username and password are required' });
+    
   }
   const user = users.find(u => u.username === username && u.password === password);
   if (!user) return res.status(401).json({ message: 'Invalid credentials' });
