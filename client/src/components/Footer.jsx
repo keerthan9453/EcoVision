@@ -1,43 +1,54 @@
-// client/src/components/Header.jsx
 import React from 'react';
+import { Link } from 'react-router-dom'; // 👈 import Link for routing
 import '../styles/Style.css';
 
 const Footer = () => {
     return (
-        <footer id="footer" class="footer">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <div class="footer-logo">
-                        <span class="footer-logo-text">Eco Vision</span>
+        <footer id="footer" className="footer">
+            <div className="footer-content">
+                <div className="footer-section">
+                    <div className="footer-logo">
+                        <span className="footer-logo-text">Eco Vision</span>
                     </div>
-                    <p class="footer-tagline">Built with accessibility in mind. Climate Action for everyone.</p>
+                    <p className="footer-tagline">
+                        Built with accessibility in mind. Climate Action for everyone.
+                    </p>
                 </div>
-                
-                <div class="footer-section">
+
+                <div className="footer-section">
                     <h4>Quick Links</h4>
-                    <ul class="footer-links">
-                        <li><a href="{{ url_for('home') }}">Home</a></li>
-                        <li><a href="{{ url_for('login') }}">login</a></li>
+                    <ul className="footer-links">
+                        <li>
+                            <Link to="/">Home</Link> {/* 👈 use Link for internal navigation */}
+                        </li>
+                        <li>
+                            <Link to="/login">Login</Link> {/* 👈 update route paths as needed */}
+                        </li>
                     </ul>
                 </div>
-                
-                <div class="footer-section">
+
+                <div className="footer-section">
                     <h4>Contact Info</h4>
-                    <div class="contact-item">
+                    <div className="contact-item">
                         <span>📧 eco.vision@outlook.com</span>
                     </div>
-                    <div class="contact-item">
+                    <div className="contact-item">
                         <span>📍Eco Vision</span>
                     </div>
-                    <div class="social-links">
-                        <a href="https://www.instagram.com/vision.eco/" rel="noopener noreferrer" target="_blank" class="social-link">
-                        📱 Instagram
+                    <div className="social-links">
+                        <a
+                            href="https://www.instagram.com/vision.eco/"
+                            rel="noopener noreferrer"
+                            target="_blank"
+                            className="social-link"
+                        >
+                            📱 Instagram
                         </a>
                     </div>
                 </div>
             </div>
-            
-            <div class="footer-bottom">
+
+            <div className="footer-bottom">
                 <p>&copy; 2025 Eco Vision - All rights reserved.</p>
             </div>
         </footer>

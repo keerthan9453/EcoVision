@@ -7,6 +7,8 @@ import Mission from '../components/Mission';
 import Insights from '../components/Insights';
 import Buttons from '../components/Buttons';
 import Footer from '../components/Footer'; // Keep this one
+import AccessibilityMenu from '../components/AccessibilityMenu';
+import ChatbotWidget from '../components/ChatbotWidget.jsx'
 
 const Home = () => {
   return (

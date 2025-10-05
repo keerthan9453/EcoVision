@@ -1,23 +1,4 @@
-<<<<<<< HEAD
-import React from 'react';
-import { useAuth0 } from '@auth0/auth0-react';
 
-const Profile = () => {
-  const { user, isAuthenticated, isLoading } = useAuth0();
-
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  return (
-    isAuthenticated && (
-      <div className="profile">
-        <img src={user.picture} alt={user.name} />
-        <h2>{user.name}</h2>
-        <p>{user.email}</p>
-      </div>
-    )
-=======
 // client/src/pages/Profile.jsx
 import React, { useEffect, useState } from 'react';
 import { jwtDecode } from 'jwt-decode';
@@ -55,7 +36,6 @@ const Profile = () => {
       <h2>Username: {user.username}</h2>
       <p>Token expires in 1 hour from login</p>
     </div>
->>>>>>> front-end
   );
 };
 
