@@ -4,7 +4,7 @@ import '../styles/Style.css';
 
 const Footer = () => {
     return (
-        <footer class="footer">
+        <footer id="footer" class="footer">
             <div class="footer-content">
                 <div class="footer-section">
                     <div class="footer-logo">
@@ -30,7 +30,7 @@ const Footer = () => {
                         <span>📍Eco Vision</span>
                     </div>
                     <div class="social-links">
-                        <a href="https://www.instagram.com/vision.eco/" target="_blank" class="social-link">
+                        <a href="https://www.instagram.com/vision.eco/" rel="noopener noreferrer" target="_blank" class="social-link">
                         📱 Instagram
                         </a>
                     </div>

@@ -8,6 +8,7 @@ const Banner = () => {
     <div className="banner">
       {/* Left Side: Text Content (Replicates <div class="text-overlay">) */}
       <div className="text-overlay">
+        
         <h1>Eco Vision</h1>
         <div className="subtext">
             <p>Building a Sustainable Future</p>
