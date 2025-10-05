@@ -11,8 +11,6 @@ import ChatbotWidget from '../components/ChatbotWidget.jsx';
 const Home = () => {
   return (
     <div id="main-content-area">
-      <Header />
-      
       {/* The banner immediately follows the header */}
       <Banner />
       <AccessibilityMenu />
@@ -20,7 +18,7 @@ const Home = () => {
       <Insights />
       <Buttons />
       <ChatbotWidget />
-      <Footer />
+      
     </div>
   );
 };
