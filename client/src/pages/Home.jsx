@@ -7,10 +7,12 @@ import Buttons from '../components/Buttons';
 import Footer from '../components/Footer';
 import AccessibilityMenu from '../components/AccessibilityMenu';
 import ChatbotWidget from '../components/ChatbotWidget.jsx';
+
 const Home = () => {
   return (
     <div id="main-content-area">
       <Header />
+      
       {/* The banner immediately follows the header */}
       <Banner />
       <AccessibilityMenu />
