@@ -10,16 +10,16 @@ import Footer from '../components/Footer'; // Keep this one
 
 const Home = () => {
   return (
-    // React fragments <> allow you to return multiple elements without an extra <div>
-    <>
-      <Header />
+    <div id="main-content-area">
       {/* The banner immediately follows the header */}
       <Banner />
+      <AccessibilityMenu />
       <Mission />
       <Insights />
       <Buttons />
-      <Footer />
-    </>
+      <ChatbotWidget />
+      
+    </div>
   );
 };
 

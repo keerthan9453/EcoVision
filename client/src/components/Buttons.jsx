@@ -18,7 +18,7 @@ const Buttons = () => {
             <Link to="/trees" className="box-link">
                 <div className="Box1 button-content">
                     <div className="icon1">
-                        <FaTree size={35} color="#256d7dff" />
+                        <FaTree size={35} color="#256d7dff" aria-label="Plant Trees Icon"  />
                     </div>
                     <h3>Plant Trees</h3>
                 </div>
@@ -26,7 +26,7 @@ const Buttons = () => {
             <Link to="/solar" className="box-link">
                 <div className="Box2 button-content">
                     <div className="icon2">
-                        <LiaSolarPanelSolid size={35} color="#c7e2e8ff" />
+                        <LiaSolarPanelSolid size={35} color="#c7e2e8ff" aria-label="Solar Panels Icon" />
                     </div>
                     <h3>Solar Panels</h3>
                 </div>
@@ -35,7 +35,7 @@ const Buttons = () => {
             <Link to="/greenspaces" className="box-link">
                 <div className="Box3 button-content">
                     <div className="icon3">
-                        <TbMichelinStarGreen size={35} color="#3552a7ff" />
+                        <TbMichelinStarGreen size={35} color="#3552a7ff" aria-label="Green Spaces Icon"  />
                     </div>
                     <h3>Green Spaces</h3>
                 </div>
@@ -45,7 +45,7 @@ const Buttons = () => {
             <Link to="/raingardens" className="box-link">
                 <div className="Box4 button-content"> 
                     <div className="icon4"> 
-                        <IoMdRainy size={35} color="#1f2f60ff"/>
+                        <IoMdRainy size={35} color="#1f2f60ff" aria-label="Rain Gardens Icons" />
                     </div>
                     <h3>Rain Gardens</h3>
                 </div>
