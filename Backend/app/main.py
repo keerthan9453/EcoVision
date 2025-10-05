@@ -6,16 +6,24 @@ from typing import Union, List, Optional
 from pydantic import BaseModel
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+import sys
+
+import sys
+import os
+from config import GEMINI_API_KEY, GEE_PROJECT
+
+
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # --- Configuration & Initialization ---
 try:
-    genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
-except KeyError:
+    genai.configure(api_key=GEMINI_API_KEY)
+except Exception as e:
     raise RuntimeError(
-        "GOOGLE_API_KEY environment variable not set. Please set it before running.")
+        f"Failed to configure Gemini API. Please check GEMINI_API_KEY in config.py: {e}")
 
 try:
-    ee.Initialize(project=os.getenv('EE_PROJECT_ID', 'ecovision-474106'))
+    ee.Initialize(project=GEE_PROJECT)
 except Exception as e:
     raise RuntimeError(f"Failed to initialize Earth Engine: {e}")
 
