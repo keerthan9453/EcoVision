@@ -143,3 +143,20 @@
     cursor: not-allowed; /* Disabled in this front-end only version */
     opacity: 0.7;
 }
+/* === High Contrast Mode Support (Adjusted for B&W visibility) === */
+body.high-contrast-mode .chatbot-popup-window {
+    background-color: #ffffff !important; /* Pure white container */
+    color: black;
+}
+
+body.high-contrast-mode .popup-header {
+    background-color: grey !important; /* Black header */
+    color: white;
+}
+
+body.high-contrast-mode .bot-bubble {
+    background-color: #ffffff; /* White bot messages */
+    color: #000000;
+    border: 2px solid #000000; /* Black border for clarity */
+}
+
