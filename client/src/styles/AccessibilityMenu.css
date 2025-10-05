@@ -1,0 +1,63 @@
+/* client/src/components/AccessibilityMenu.css */
+
+.accessibility-wrapper {
+    position: fixed; 
+    bottom: 40px;    
+    right: 40px;     
+    z-index: 10000;
+}
+
+.accessibility-button {
+    width: 60px;
+    height: 60px;
+    background-color: #004d40;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.2s;
+}
+
+.accessibility-button:hover {
+    background-color: #00695c;
+}
+
+.accessibility-dropdown {
+    position: absolute;
+    bottom: 65px; /* Position it above the toggle button (50px height + 15px space) */
+    right: 0;
+    width: 200px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 5px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+}
+
+.accessibility-dropdown button {
+    background: none;
+    border: none;
+    padding: 10px 10px;
+    text-align: left;
+    cursor: pointer;
+    font-size: 14px;
+    color: #333;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.accessibility-dropdown button:hover {
+    background-color: #f0f0f0;
+}
+body.high-contrast-mode .accessibility-button {
+    background-color: white !important;
+}
+body.high-contrast-mode .accessibility-dropdown {
+    background-color: rgb(72, 88, 108) !important;
+}

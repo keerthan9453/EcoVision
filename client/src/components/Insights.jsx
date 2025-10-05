@@ -11,21 +11,21 @@ const Insights = () => {
         <div className="subtext1">
             <div className="box1">
                 <div className="icon1">
-                    <CiLocationOn size={35} color="#256d7dff" /> 
+                    <CiLocationOn size={35} color="#256d7dff" aria-label="Location Icon" /> 
                 </div>
                 <h3>Interactive <em>What If </em>Scenarios</h3>
                 <p>Click to plant trees, add solar panels, or create green spaces. Watch your community transform in real-time with measurable impact metrics.</p>
             </div>
             <div className="box2">
                 <div className="icon2">
-                    <IoIosChatboxes size={35} color="#c7e2e8ff"/>
+                    <IoIosChatboxes size={35} color="#c7e2e8ff" aria-label="Personalized Advice Icon" />
                 </div>
                 <h3>AI Eco-Coach</h3>
                 <p>Get personalized advice on reducing your carbon footprint. Ask anything from <em>What can I do in my apartment to make it eco-friendly?</em> to <em>How much am I saving by biking?</em></p>
             </div>
             <div className="box3">
                 <div className="icon3">
-                    <FaAccessibleIcon size={35} color="#3552a7ff"/>
+                    <FaAccessibleIcon size={35} color="#3552a7ff" aria-label="Accessibility Icon" />
                 </div>
                 <h3>Accessible by Design</h3>
                 <p>High contrast mode, screen reader support, keyboard navigation, and dyslexia-friendly options. Climate action should be for everyone.</p>

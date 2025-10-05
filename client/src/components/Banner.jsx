@@ -19,7 +19,7 @@ const Banner = () => {
       {/* Right Side: Image (Replicates <img src="..." alt="Logo" class="logo">) */}
       <img
         src={bannerImage} // Use the imported image variable
-        alt="Logo"
+        alt="Eco Vision Town"
       />
     </div>
   );
