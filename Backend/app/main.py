@@ -1,15 +1,14 @@
 import google.generativeai as genai
 import os
-import json
 import ee
 from typing import Union, List, Optional
 from pydantic import BaseModel
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-import sys
+from ml import get_satellite_image
+from sam import segment_image
 
 import sys
-import os
 from config import GEMINI_API_KEY, GEE_PROJECT
 
 
@@ -87,6 +86,18 @@ class AnalysisResponse(BaseModel):
     raw_gemini_output: str
     map_id: Optional[dict] = None
 
+
+class ProcessRequest(BaseModel):
+    lat: float
+    lon: float
+    radius: float = 700.0  # Default radius in meters
+
+
+class ProcessResponse(BaseModel):
+    segmented_area_m2: float
+    coordinates: tuple
+    gemini_analysis: str
+    image_path: str
 # --- Helper Functions ---
 
 
@@ -229,9 +240,9 @@ async def perform_gee_and_gemini_analysis(aoi_data: AOI, selected_layers: List[s
 
     model = genai.GenerativeModel('gemini-2.5-pro')
     prompt = (
-        "I have a list of urban locations with their environmental data within a defined Area of Interest (AOI). "
+        "I have an urban locations with their environmental data within a defined Area of Interest (AOI). "
         "I need to identify the most efficient locations for environmental interventions, specifically focusing on the selected layers. "
-        "Please analyze the following data for each location and recommend the top 3-5 most suitable locations, "
+        "Please analyze the following data the location and recommend the top 3-5 most suitable method of sustainability, "
         "explaining your reasoning based on the provided criteria. "
         "For each recommendation, clearly state the location's approximate latitude and longitude, "
         "the primary reason for its suitability, and a suggested action. "
@@ -305,3 +316,53 @@ async def analyze_area(request: AnalysisRequest):
     except Exception as e:
         raise HTTPException(
             status_code=500, detail=f"Internal server error during analysis: {e}")
+
+
+@app.post("/process", response_model=ProcessResponse)
+async def process_area(request: ProcessRequest):
+    """
+    Complete processing pipeline:
+    1. Fetch satellite image from GEE
+    2. Segment area using SAM
+    3. Analyze with Gemini
+    """
+    try:
+        # Step 1: Get satellite image
+        print(f"Fetching satellite image for ({request.lat}, {request.lon})")
+        image_path = await get_satellite_image(request.lat, request.lon, request.radius)
+
+        if not image_path or not os.path.exists(image_path):
+            raise HTTPException(
+                status_code=500, detail="Failed to fetch satellite image")
+
+        # Step 2: Run segmentation
+        print(f"Running segmentation on {image_path}")
+        segmented_area, coords = await segment_image(image_path)
+
+        if not segmented_area or not coords:
+            raise HTTPException(status_code=500, detail="Segmentation failed")
+
+        # Step 3: Analyze with Gemini
+        prompt = f"""
+        Analyze this urban area for tree planting potential:
+        - Location: {coords}
+        - Area: {segmented_area:.2f} m²
+        
+        Provide:
+        1. Number of trees that could be planted
+        2. Expected environmental impact
+        3. Recommended tree species
+        4. Implementation timeline
+        """
+
+        response = model.generate_content(prompt)
+
+        return ProcessResponse(
+            segmented_area_m2=segmented_area,
+            coordinates=coords,
+            gemini_analysis=response.text,
+            image_path=image_path
+        )
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
